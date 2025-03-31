@@ -38,12 +38,9 @@ emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.48 (e
 ``` sh
 $ cd /path/to/project
 
-$ emcc ./src/without-pthreads.cpp ./src/some-shit.cpp \
-    -o ./web/some-without-pthreads.js
+$ emcc ./src/without-pthreads.cpp ./src/some-shit.cpp -o ./web/some-without-pthreads.js
 
-$ emcc ./src/with-pthreads.cpp ./src/some-shit.cpp \
-    -o ./web/some-with-pthreads.js \
-    -pthread -sPROXY_TO_PTHREAD
+$ emcc ./src/with-pthreads.cpp ./src/some-shit.cpp -o ./web/some-with-pthreads.js -pthread -sPROXY_TO_PTHREAD
 ```
 
 ### With CMake
@@ -51,12 +48,10 @@ $ emcc ./src/with-pthreads.cpp ./src/some-shit.cpp \
 ``` sh
 $ cd /path/to/project
 
-$ cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE="$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake" \
-    -DCMAKE_BUILD_TYPE=Release -DWITH_PTHREADS=0 ..
+$ cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE="$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake" -DCMAKE_BUILD_TYPE=Release -DWITH_PTHREADS=0 ..
 $ cmake --build . --target install
 
-$ cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE="$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake" \
-    -DCMAKE_BUILD_TYPE=Release -DWITH_PTHREADS=1 ..
+$ cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE="$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake" -DCMAKE_BUILD_TYPE=Release -DWITH_PTHREADS=1 ..
 $ cmake --build . --target install
 ```
 
